@@ -47,10 +47,6 @@ You need to manually set your Job API key (e.g., Adzuna API key) and optionally 
 Create a `.env` file in the root directory and add:
 
 ```
-API_APP_ID=your_adzuna_app_id
-API_APP_KEY=your_adzuna_api_key
-GOOGLE_MAPS_API_KEY=your_google_maps_key
-
 ADZUNA_API_URL=https://api.adzuna.com/v1/api/jobs/gb/search/1
 ADZUNA_APP_ID=your_adzuna_app_id
 ADZUNA_API_KEY=your_adzuna_api_key
