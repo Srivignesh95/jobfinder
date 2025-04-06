@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h2.text-center Search Form
+
+    form(action="/search", method="POST")
+        label(for="skills") Skills:
+        input(type="text", name="skills" id="skills")
+
+        label(style="text-align:center") OR
+
+        label(for="resumeUrl") Resume URL:
+        input(type="url", name="resumeUrl" id="resumeUrl")
+
+        label(for="location") Location:
+        input(type="text", name="location" id="location")
+
+        
+
+        button(type="submit") Search Jobs
+

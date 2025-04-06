@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h2 Job Matches
+  link(rel="stylesheet", href="/styles.css")
+
+  if jobs.length > 0
+    .job-list
+      each job, index in jobs
+        .job-item
+          h3= job.title
+          p.location
+            i(class="fas fa-map-marker-alt")
+            |  #{job.location.display_name}
+
+          button(id=`toggle-btn-${index}`, onclick=`toggleDetails(${index})`) Show More
+
+          .job-details(id=`details-${index}`)
+            p !{job.description || 'No description available.'}
+            if job.redirect_url
+              p
+                a(href=job.redirect_url, target="_blank") 🔗 Apply / Read More
+
+            if job.location.display_name
+              iframe(
+                width="100%",
+                height="250",
+                frameborder="0",
+                style="border:0",
+                src=`https://www.google.com/maps?q=${encodeURIComponent(job.location.display_name)}&output=embed`,
+                allowfullscreen
+              )
+  else
+    p.no-jobs No relevant jobs found. Try changing your location or skills.
+
+  h2 Resume Skills
+  if resumeAnalysis.skills && resumeAnalysis.skills.length > 0
+    p.skill-line= resumeAnalysis.skills.slice(0, 5).join(', ')
+  else
+    p No skills found in resume.
